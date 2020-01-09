@@ -19,7 +19,7 @@ var _checkoutMethod = function (methodname, fn) {
     }
     var obj = arguments[length - 1];
     return (_isArray(obj) || typeof obj[methodname] !== 'function')
-      ? fn(arguments)
+      ? fn.apply(this, arguments)
       : obj[methodname].call(obj, Array.prototype.slice.call(arguments, 0, length - 1));
   };
 };

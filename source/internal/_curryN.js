@@ -24,8 +24,8 @@ export default function _curryN(length, received, fn) {
     while (combinedIdx < received.length || argIdx < rest.length) {
       let result;
       if (combinedIdx < received.length &&
-        !_isPlaceHolder(received[combinedIdx]) ||
-        argIdx > rest.length
+        (!_isPlaceHolder(received[combinedIdx]) ||
+          argIdx >= rest.length)
       ) {
         result = received[combinedIdx];
       } else {

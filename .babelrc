@@ -1,8 +1,22 @@
 {
   "env": {
-    "test": {
+    "cjs": {
       "plugins": [
-        "@babel/plugin-transform-modules-commonjs"
+        "annotate-pure-calls",
+        "./scripts/transpile/esm-to-cjs",
+        "./scripts/transpile/wrap-constructor-pattern"
+      ]
+    },
+    "es": {
+      "plugins": [
+        "annotate-pure-calls",
+        [
+          "import-export-rename",
+          {
+            "^(.+?)(?:\\.m?js)?$": "$1.js"
+          }
+        ],
+        "./scripts/transpile/wrap-constructor-pattern"
       ]
     }
   }
